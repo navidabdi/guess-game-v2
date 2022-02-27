@@ -67,6 +67,9 @@ function initGame() {
 function resetResultContent() {
   document.getElementById('result').innerHTML = '';
   document.getElementById('history').innerHTML = '';
+  document.getElementById(
+    'title'
+  ).innerHTML = `<h1 id="title" class="banner p-3">1.2.3.</h1>`;
 }
 
 /**
@@ -128,6 +131,12 @@ function getDialog(dialogType, text) {
   return dialog;
 }
 
+function showTheNumOfGuess(theNumOfGuess) {
+  document.getElementById(
+    'title'
+  ).innerHTML = `<p class="success">Your Total Guesses: ${theNumOfGuess}</p>`;
+}
+
 function showYouWon() {
   const text = 'Awesome job, you got it!';
   /**
@@ -136,6 +145,7 @@ function showYouWon() {
    * HINT: Use the 'won' and text parameters
    */
   let resultDialog = getDialog('won', text);
+  showTheNumOfGuess(guesses.length + 1);
   document.getElementById('result').innerHTML = resultDialog;
 }
 

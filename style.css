@@ -4,7 +4,9 @@
   max-width: 400px;
   margin: 0 auto;
 }
-
+body {
+  font-family: sans-serif;
+}
 #history {
   margin-top: 16px;
 }
@@ -12,5 +14,8 @@
 .banner {
   color: #ffd23f;
   font-size: 90px;
-  font-family: sans-serif;
+}
+.success {
+  color: #3fff89;
+  font-size: 60px;
 }
