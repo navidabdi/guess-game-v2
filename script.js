@@ -14,17 +14,31 @@
 // Variable to store the list of guesses
 
 // Variable for store the correct random number
-
+// console.log('test');
+let randNumber = getRandomNumber();
+let numberGuess;
+let resultDialog = '';
 window.onload = function () {
   document.getElementById('number-submit').addEventListener('click', playGame);
   document.getElementById('restart-game').addEventListener('click', initGame);
+  document.getElementById('number-guess').addEventListener('change', (e) => {
+    numberGuess = e.target.value;
+  });
 };
 
 /**
  * Functionality for playing the whole game
  */
 function playGame() {
-  // *CODE GOES BELOW HERE *
+  if (numberGuess > randNumber) {
+    showNumberAbove();
+  } else if (numberGuess < randNumber) {
+    showNumberBelow();
+  } else {
+    showYouWon();
+  }
+  console.log(numberGuess);
+  console.log(randNumber);
 }
 
 /**
@@ -38,7 +52,7 @@ function playGame() {
  * HINT: reset the correctNumber, guesses, and HTML content
  */
 function initGame() {
-  // *CODE GOES BELOW HERE *
+  window.location.reload();
 }
 
 /**
@@ -53,7 +67,7 @@ function resetResultContent() {
  * HINT: Use Math.random
  */
 function getRandomNumber() {
-  // *CODE GOES BELOW HERE *
+  return Math.floor(Math.random() * 100) + 1;
 }
 
 /**
@@ -106,9 +120,8 @@ function showYouWon() {
    * and save it to variable called dialog
    * HINT: Use the 'won' and text parameters
    */
-  // *CODE GOES BELOW HERE *
-
-  document.getElementById('result').innerHTML = dialog;
+  resultDialog += getDialog('won', text);
+  document.getElementById('result').innerHTML = resultDialog;
 }
 
 function showNumberAbove() {
@@ -118,10 +131,12 @@ function showNumberAbove() {
    * and save it to variable called dialog
    * HINT: Use the 'warning' and text parameters
    */
-  // *CODE GOES BELOW HERE *
+  resultDialog += getDialog('warning', text);
 
-  document.getElementById('result').innerHTML = dialog;
+  document.getElementById('result').innerHTML = resultDialog;
 }
+
+// showNumberAbove();
 
 function showNumberBelow() {
   const text = 'Your guess is too low!';
@@ -131,6 +146,6 @@ function showNumberBelow() {
    * HINT: Use the 'warning' and text parameters
    */
   // *CODE GOES BELOW HERE *
-
-  document.getElementById('result').innerHTML = dialog;
+  resultDialog += getDialog('warning', text);
+  document.getElementById('result').innerHTML = resultDialog;
 }
