@@ -14,10 +14,10 @@
 // Variable to store the list of guesses
 
 // Variable for store the correct random number
-// console.log('test');
+
 let randNumber = getRandomNumber();
 let numberGuess;
-let resultDialog = '';
+
 window.onload = function () {
   document.getElementById('number-submit').addEventListener('click', playGame);
   document.getElementById('restart-game').addEventListener('click', initGame);
@@ -37,8 +37,6 @@ function playGame() {
   } else {
     showYouWon();
   }
-  console.log(numberGuess);
-  console.log(randNumber);
 }
 
 /**
@@ -120,7 +118,7 @@ function showYouWon() {
    * and save it to variable called dialog
    * HINT: Use the 'won' and text parameters
    */
-  resultDialog += getDialog('won', text);
+  let resultDialog = getDialog('won', text);
   document.getElementById('result').innerHTML = resultDialog;
 }
 
@@ -131,12 +129,9 @@ function showNumberAbove() {
    * and save it to variable called dialog
    * HINT: Use the 'warning' and text parameters
    */
-  resultDialog += getDialog('warning', text);
-
+  let resultDialog = getDialog('warning', text);
   document.getElementById('result').innerHTML = resultDialog;
 }
-
-// showNumberAbove();
 
 function showNumberBelow() {
   const text = 'Your guess is too low!';
@@ -145,7 +140,6 @@ function showNumberBelow() {
    * and save it to variable called dialog
    * HINT: Use the 'warning' and text parameters
    */
-  // *CODE GOES BELOW HERE *
-  resultDialog += getDialog('warning', text);
+  let resultDialog = getDialog('warning', text);
   document.getElementById('result').innerHTML = resultDialog;
 }
