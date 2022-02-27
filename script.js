@@ -53,7 +53,12 @@ function displayResult() {
  * HINT: reset the correctNumber, guesses, and HTML content
  */
 function initGame() {
-  window.location.reload();
+  guesses = [];
+  document.getElementById('number-guess').value = '';
+  randNumber = getRandomNumber();
+  resetResultContent();
+  displayHistory();
+  //   window.location.reload();
 }
 
 /**
@@ -61,6 +66,7 @@ function initGame() {
  */
 function resetResultContent() {
   document.getElementById('result').innerHTML = '';
+  document.getElementById('history').innerHTML = '';
 }
 
 /**
@@ -90,7 +96,10 @@ function saveGuessHistory(guess) {
  * HINT: use while loop and string concatentation to create a list of guesses
  */
 function displayHistory(guesses) {
-  let index = guesses.length - 1;
+  let index;
+  if (guesses !== undefined) {
+    index = guesses.length - 1;
+  }
   let list = "<ul class='list-group'>";
 
   while (index >= 0) {
