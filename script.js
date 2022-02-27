@@ -78,7 +78,6 @@ function getRandomNumber() {
  */
 function saveGuessHistory(guess) {
   guesses.push(guess);
-
   return guesses;
 }
 
