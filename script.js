@@ -17,7 +17,7 @@
 
 let randNumber = getRandomNumber();
 let numberGuess;
-
+let guesses = [];
 window.onload = function () {
   document.getElementById('number-submit').addEventListener('click', playGame);
   document.getElementById('restart-game').addEventListener('click', initGame);
@@ -30,6 +30,15 @@ window.onload = function () {
  * Functionality for playing the whole game
  */
 function playGame() {
+  displayResult();
+  displayHistory(saveGuessHistory(numberGuess));
+}
+
+/**
+ * Show the result for if the guess it too high, too low, or correct
+ * HINT: Use if, else if, else statement
+ */
+function displayResult() {
   if (numberGuess > randNumber) {
     showNumberAbove();
   } else if (numberGuess < randNumber) {
@@ -38,12 +47,6 @@ function playGame() {
     showYouWon();
   }
 }
-
-/**
- * Show the result for if the guess it too high, too low, or correct
- * HINT: Use if, else if, else statement
- */
-// *CODE GOES BELOW HERE *
 
 /**
  * Initialize a new game by resetting all values and content on the page
@@ -74,21 +77,27 @@ function getRandomNumber() {
  * HINT: Use the guesses variable
  */
 function saveGuessHistory(guess) {
-  // *CODE GOES BELOW HERE *
+  guesses.push(guess);
+
+  return guesses;
 }
 
 /**
  * Display guess history to user
  * HTML TO USE:
  * <ul class='list-group'>
- *  <li class='list-group-item'>You guessed {number}</li
+ *  <li class='list-group-item'>You guessed {number}</li>
  * </ul>
  * HINT: use while loop and string concatentation to create a list of guesses
  */
-function displayHistory() {
-  let index; // TODO
+function displayHistory(guesses) {
+  let index = 0;
   let list = "<ul class='list-group'>";
-  // *CODE GOES BELOW HERE *
+
+  while (index < guesses.length) {
+    list += `<li class='list-group-item'>You guessed ${guesses[index]}</li>`;
+    index++;
+  }
   list += '</ul>';
   document.getElementById('history').innerHTML = list;
 }
